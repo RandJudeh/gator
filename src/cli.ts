@@ -1,0 +1,28 @@
+// src/cli.ts
+import { CommandHandler } from "./cli-types.js";
+
+export type CommandsRegistry = {
+  [cmdName: string]: CommandHandler;
+};
+
+export function registerCommand(
+  registry: CommandsRegistry,
+  cmdName: string,
+  handler: CommandHandler
+) {
+  registry[cmdName] = handler;
+}
+
+export async function runCommand(
+  registry: CommandsRegistry,
+  cmdName: string,
+  ...args: string[]
+) {
+  const handler = registry[cmdName];
+  if (!handler) {
+    console.error(`Unknown command: ${cmdName}`);
+    process.exit(1);
+  }
+
+  await handler(cmdName, ...args);
+}
