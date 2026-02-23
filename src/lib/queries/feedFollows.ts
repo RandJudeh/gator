@@ -11,7 +11,7 @@ export async function createFeedFollow(userId: string, feedId: string) {
     })
     .returning();
 
-  // نرجع البيانات مع اسم المستخدم واسم الفيد
+
   const result = await db
     .select({
       id: feedFollows.id,

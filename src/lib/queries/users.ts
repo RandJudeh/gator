@@ -10,7 +10,7 @@ export async function createUser(name: string) {
 
 export async function getUserByName(name: string) {
   const user = await db.select().from(users).where(eq(users.name, name));
-  return user[0]; // نعيد العنصر الأول أو undefined
+  return user[0]; 
 }
 
 export async function deleteAllUsers() {

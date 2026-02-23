@@ -18,7 +18,7 @@ export async function scrapeFeeds() {
     const parsed = await parser.parseURL(feed.url);
 
     for (const item of parsed.items) {
-      // 🔹 معالجة التاريخ بمرونة
+   
       const dateString =
         item.isoDate ||
         item.pubDate ||
@@ -33,7 +33,6 @@ export async function scrapeFeeds() {
         }
       }
 
-      // 🔹 حفظ البوست في قاعدة البيانات
       await createPost({
         title: item.title ?? "No title",
         url: item.link ?? "",

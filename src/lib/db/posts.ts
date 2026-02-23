@@ -5,7 +5,7 @@ export async function createPost(post: typeof posts.$inferInsert) {
   const [newPost] = await db
     .insert(posts)
     .values(post)
-    .onConflictDoNothing() // يمنع الخطأ إذا url مكرر
+    .onConflictDoNothing() 
     .returning();
 
   return newPost;

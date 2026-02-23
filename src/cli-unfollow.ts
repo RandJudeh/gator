@@ -10,17 +10,14 @@ export const handlerUnfollow: UserCommandHandler = async (
   const url = args[0];
   if (!url) throw new Error("Feed URL required");
 
-  // نجيب الفيد من URL
+ 
   const feed = await getFeedByUrl(url);
   if (!feed) {
     throw new Error(`Feed with URL ${url} not found`);
   }
 
-  // نحذف المتابعة باستخدام الـ ID الحقيقي
   await deleteFeedFollow(user.id, feed.id);
 
   console.log(`Unfollowed feed: ${feed.name} (by ${user.name})`);
 };
 
-// تسجيل الكوماند
-// registerCommand(commandsRegistry, "unfollow", middlewareLoggedIn(handlerUnfollow));

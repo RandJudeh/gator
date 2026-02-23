@@ -1,6 +1,6 @@
 import { db } from "../db/index";
 import { feeds, users } from "../db/schema";
-import { eq ,sql} from "drizzle-orm"; // ✅ استورد eq من drizzle-orm
+import { eq ,sql} from "drizzle-orm"; 
 export async function createFeed(
   name: string,
   url: string,
@@ -26,7 +26,7 @@ export async function getAllFeeds() {
       userName: users.name,
     })
     .from(feeds)
-    .leftJoin(users, eq(feeds.userId, users.id)); // ✅ هذا الشكل الصحيح الآن
+    .leftJoin(users, eq(feeds.userId, users.id)); 
 
   return result;
 }
@@ -48,7 +48,7 @@ export async function markFeedFetched(feedId: string) {
           .execute();
 }
 
-// الحصول على الـ feed التالي لجلبه
+
 export async function getNextFeedToFetch() {
   const [feed] = await db
     .select()

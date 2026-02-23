@@ -14,7 +14,7 @@ export const middlewareLoggedIn = (
 ): CommandHandler => {
   return async (cmdName: string, ...args: string[]) => {
    const config = readConfig();
-  const user = config.currentUserName; // المستخدم الحالي
+  const user = config.currentUserName;
     if (!user) {
       throw new Error("No user logged in");
     }
